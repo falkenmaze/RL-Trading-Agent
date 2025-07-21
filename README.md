@@ -1,6 +1,6 @@
 # Deep Reinforcement Learning SPY Trading Agent
 
-This project implements a Deep Q-Network (DQN) agent trained to trade the SPY ETF using historical price data. It uses a custom OpenAI Gym environment to simulate a realistic trading experience with capital constraints, daily market steps, and dynamic portfolio tracking.
+This project implements a Deep Q-Network (DQN) agent trained to trade the SPY ETF using historical price data. It uses a custom OpenAI Gym environment to simulate a realistic trading experience with capital constraints, daily market steps, indicators and dynamic portfolio tracking.
 
 ## 🚀 Project Overview
 
@@ -18,14 +18,14 @@ The agent learns to **buy, sell, or hold SPY** stock to maximize net worth over 
 - **Algorithm**: Deep Q-Learning (DQN)
 - **Observation Space**:
   - Current price of SPY
+  - Moving Average computed over 10 days
+  - Moving Average computed over 20 Days
+  - RSI commputed over 14 days
   - Number of shares held
-  - Cash available
-  - Net worth
-  - Price history (optional)
 - **Action Space**:
   - 0 → Hold
-  - 1 → Buy
-  - 2 → Sell
+  - 1-5 → Buy 1-5 shares
+  - 6-10 → Sell 1-5 shares
 - **Reward Function**:
   - +ve reward on profitable trades
   - Small penalty for holding to encourage active trading
