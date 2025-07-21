@@ -31,16 +31,18 @@ The agent learns to **buy, sell, or hold SPY** stock to maximize net worth over 
   - Small penalty for holding to encourage active trading
   - Encourages maximizing portfolio value over time
 
-## 🧪 Usage
+## Usage
 
 ### 1. Clone the Repository
 ```bash
 git clone https://github.com/yourusername/spy-trading-dqn.git
 cd spy-trading-dqn
 ```
+### 2. Install the Requirements
 ```bash
 pip install -r requirements.txt
 ```
+### 3. Use the trained model or Train your own Model
 ```bash
 python train_dqn.py
 ```
