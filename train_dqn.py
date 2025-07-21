@@ -10,27 +10,27 @@ ticker = "SPY"
 df = yf.download(ticker, start="2020-01-01", end="2023-12-31")
 print(df.columns)
 # CREATE AND WRAP ENVIRONMENT
-# env = DummyVecEnv([lambda: TradingEnv(df, render_mode="human")])
-env = TradingEnv(df, render_mode='human')
+env = DummyVecEnv([lambda: TradingEnv(df, render_mode="human")])
+#env = TradingEnv(df, render_mode='human') # USE THIS ENVIRONMENT FOR TESTING 
 
 # INITIALIZE DQN MODEL
-# model = DQN(
-# 	policy = "MlpPolicy",
-# 	env = env,
-# 	learning_rate = 1e-3,
-# 	buffer_size = 10000,
-# 	learning_starts = 1000,
-# 	batch_size = 32,
-# 	gamma = 0.99,
-# 	train_freq = 1,
-# 	target_update_interval = 100,
-# 	verbose = 1
-# 	)
+model = DQN(
+	policy = "MlpPolicy",
+	env = env,
+	learning_rate = 1e-3,
+	buffer_size = 10000,
+	learning_starts = 1000,
+	batch_size = 32,
+	gamma = 0.99,
+	train_freq = 1,
+	target_update_interval = 100,
+	verbose = 1
+	)
 
-# # TRAIN THE MODEL
-# model.learn(total_timesteps = 50000)
-# # SAVE THE MODEL
-# model.save("dqn_training_model")
+# TRAIN THE MODEL
+model.learn(total_timesteps = 50000)
+# SAVE THE MODEL
+model.save("dqn_training_model")
 
 # TEST THE MODEL
 obs = env.reset()
